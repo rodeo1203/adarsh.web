@@ -2,13 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Adarsh Pandey | Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Adarsh Pandey | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Hello, I'm Adarsh</h1>
-    <p>Quant Trader| Cornell MFE</p>
-  </header>
+  <!-- Canvas for moving dots -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+
+  <!-- All your content lives here -->
+  <div class="content">
+    <!-- Hero / Landing -->
+    <section id="hero" class="section">
+      <h1>Adarsh Pandey</h1>
+      <!-- We'll type this in via JavaScript -->
+      <p id="tagline" data-text="Aspiring Quant | MFE @ Cornell"></p>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>
+        A curious and creative individual with trading experience and quantitative expertise,  
+        currently a CFA Level III candidate.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>Trading</li>
+        <li>Derivatives</li>
+        <li>Python</li>
+        <li>Data Analysis</li>
+        <li>Financial Markets</li>
+        <li>Machine Learning</li>
+        <li>LLM & RAG</li>
+      </ul>
+    </section>
+
+    <!-- Hobbies & Interests -->
+    <section id="hobbies" class="section">
+      <h2>Hobbies & Interests</h2>
+      <ul class="hobbies-list">
+        <li>Filmmaking</li>
+        <li>Singing</li>
+        <li>Tennis</li>
+        <li>
+          <a href="https://instagram.com/adarsh.film" target="_blank" rel="noopener">
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact / Links -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a></p>
+      <p>
+        <a href="https://github.com/rodeo1203" target="_blank" rel="noopener">GitHub</a> |
+        <a href="https://linkedin.com/in/-adarshpandey" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

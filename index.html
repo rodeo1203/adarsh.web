@@ -1,76 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adarsh Pandey | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsh Pandey | Aspiring Quant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"/>
 </head>
-<body>
-  <!-- Canvas for moving dots -->
-  <canvas id="bg-canvas"></canvas>
+<body class="light-mode">
+    <div class="background-animation">
+        <canvas id="backgroundCanvas"></canvas>
+    </div>
 
-  <!-- Theme toggle button -->
-  <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-
-  <!-- All your content lives here -->
-  <div class="content">
-    <!-- Hero / Landing -->
-    <section id="hero" class="section">
-      <h1>Adarsh Pandey</h1>
-      <!-- We'll type this in via JavaScript -->
-      <p id="tagline" data-text="Aspiring Quant | MFE @ Cornell"></p>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="#home"><img src="images/logo.png" alt="AP Logo"></a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#portfolio">portfolio</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/rodeo1203" target="_blank" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/adarshpandey" target="_blank" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/adarsh.film" target="_blank" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero section light-section">
+        <div class="container hero-container">
+            <!-- Replace the hero-image section in your HTML with this -->
+            <div class="hero-content">
+                <div class="left-section">
+                    <h1><span class="bracket">&lt;</span><span class="typewriter-text"></span><span class="bracket">&gt;</span></h1>
+                    <!-- <p>Experienced as a trader with a strong quantitative skillset</p> -->
+                </div>
+                
+                <div class="hero-image-container">
+                    <img id="quant-cloud" class="word-cloud left-cloud" src="images/quant-wordcloud.png" alt="Quantitative Skills">
+                    <div class="hero-image">
+                        <img src="images/portrait.png" alt="Adarsh Pandey Portrait">
+                    </div>
+                    <img id="creative-cloud" class="word-cloud right-cloud" src="images/creative-wordcloud.png" alt="Creative Interests">
+                </div>
+                
+                <div class="right-section">
+                    <h1>creative</h1>
+                    <!-- <p>A curious individual with a knack for films, tennis and music</p> -->
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- About Me -->
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <p>
-        A curious and creative individual with trading experience and quantitative expertise,  
-        currently a CFA Level III candidate.
-      </p>
+    <section id="about" class="section dark-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Adarsh Pandey, an aspiring quantitative finance professional currently pursuing my Master of Financial Engineering at Cornell University. My journey blends financial expertise with technical skills, creating a unique perspective on market dynamics and quantitative analysis.</p>
+                    <p>As a CFA Level III candidate with trading experience, I bring together theoretical knowledge and practical market insights. I'm passionate about exploring the intersection of finance, mathematics, and technology to develop innovative solutions for complex financial challenges.</p>
+
+                </div>
+                <div class="skills">
+                    <div class="skill-category">
+                        <h3>Finance</h3>
+                        <ul>
+                            <li>Derivatives Pricing</li>
+                            <li>Trading Strategies</li>
+                            <li>Financial Modeling</li>
+                            <li>Risk Management</li>
+                            <li>Market Analysis</li>
+                        </ul>
+                        <div class="resume-download">
+                            <a href="files/adarsh_pandey_resume.pdf" download class="download-btn">Download Resume <i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Technical</h3>
+                        <ul>
+                            <li>Python & Data Analysis</li>
+                            <li>Machine Learning</li>
+                            <li>LLM & RAG Systems</li>
+                            <li>Statistical Methods</li>
+                            <li>Algorithmic Trading</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>Trading</li>
-        <li>Derivatives</li>
-        <li>Python</li>
-        <li>Data Analysis</li>
-        <li>Financial Markets</li>
-        <li>Machine Learning</li>
-        <li>LLM & RAG</li>
-      </ul>
+    <section id="portfolio" class="section light-section">
+        <div class="container">
+            <h2>Portfolio</h2>
+            
+            <div class="portfolio-carousel">
+                <button class="carousel-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="portfolio-slides">
+                    <div class="portfolio-slide active" data-category="quant">
+                        <h3 class="portfolio-section-title">Quant Finance</h3>
+                        <div class="portfolio-grid quant-section">
+                            <!-- Your quant items here -->
+                            <div class="portfolio-item" data-category="quant">
+                                <div class="portfolio-image placeholder"></div>
+                                <div class="portfolio-overlay">
+                                    <h3>Options Pricing Model</h3>
+                                    <p>Financial Engineering</p>
+                                    <a href="#" class="portfolio-link">View Project</a>
+                                </div>
+                            </div>
+                            <!-- Other quant items -->
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-slide" data-category="creative">
+                        <h3 class="portfolio-section-title">Film/Photo</h3>
+                        <div class="portfolio-grid creative-section">
+                            <!-- Your creative items here -->
+                            <div class="portfolio-item" data-category="creative">
+                                <div class="portfolio-image placeholder"></div>
+                                <div class="portfolio-overlay">
+                                    <h3>Short Film</h3>
+                                    <p>Cinematography</p>
+                                    <a href="#" class="portfolio-link">Watch Film</a>
+                                </div>
+                            </div>
+                            <!-- Other creative items -->
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+            </div>
+        </div>
     </section>
 
-    <!-- Hobbies & Interests -->
-    <section id="hobbies" class="section">
-      <h2>Hobbies & Interests</h2>
-      <ul class="hobbies-list">
-        <li>Filmmaking</li>
-        <li>Singing</li>
-        <li>Tennis</li>
-        <li>
-          <a href="https://instagram.com/adarsh.film" target="_blank" rel="noopener">
-            Instagram
-          </a>
-        </li>
-      </ul>
+    <section id="contact" class="section dark-section">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>I'm always open to discussing new opportunities, project collaborations, or just having a conversation about finance, technology, or any of my interests.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-label">Email:</span>
+                            <span class="contact-value">ap2459@cornell.edu</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">GitHub:</span>
+                            <span class="contact-value">rodeo1203</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Instagram:</span>
+                            <span class="contact-value">adarsh.film</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Location:</span>
+                            <span class="contact-value">Ithaca, NY</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+    
+    <footer class="footer dark-section">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Adarsh Pandey. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
 
-    <!-- Contact / Links -->
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:ap2459@cornell.edu">ap2459@cornell.edu</a></p>
-      <p>
-        <a href="https://github.com/rodeo1203" target="_blank" rel="noopener">GitHub</a> |
-        <a href="https://linkedin.com/in/-adarshpandey" target="_blank" rel="noopener">LinkedIn</a>
-      </p>
-    </section>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

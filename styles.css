@@ -46,22 +46,23 @@ body.dark-mode {
 /* Navigation Bar */
 .navbar {
   background-color: rgba(17, 17, 17, 0.95);
-  padding: 15px 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
   transition: all 0.3s ease;
+}
+
+.navbar-container {
   display: flex;
-  justify-content: space-between; /* Changed to space-between for alignment */
   align-items: center;
-  padding-left: 40px; /* Add padding for logo */
-  padding-right: 40px; /* Add padding for social icons */
+  padding: 15px 40px;
+  position: relative; /* This helps with absolute positioning of nav-links */
 }
 
 .logo {
-  margin-left: 0;
+  flex: 0 0 auto; /* Don't grow or shrink */
 }
 
 .logo a {
@@ -72,18 +73,25 @@ body.dark-mode {
 }
 
 .logo img {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
 .nav-links {
+  position: absolute;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: center; /* Center the navigation links */
+  justify-content: center;
+  pointer-events: none; /* Let clicks pass through to elements below */
 }
 
 .nav-links ul {
   display: flex;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto; /* Re-enable clicks on the actual links */
 }
 
 .nav-links li {
@@ -120,17 +128,17 @@ body.dark-mode {
 }
 
 .social-icons {
+  flex: 0 0 auto; /* Don't grow or shrink */
   display: flex;
-  /* Removed margin-right as we have padding on the navbar */
+  margin-left: auto; /* Push to the right */
 }
 
 .social-icons a {
   color: white;
   margin: 0 10px;
-  font-size: 20px;
+  font-size: 28px;
   text-decoration: none;
 }
-
 /* Section Styling */
 .section {
   padding: 100px 0 80px;
@@ -154,7 +162,8 @@ body.dark-mode {
 /* All other sections reduced in height */
 section:not(.hero) {
   min-height: auto;
-  padding: 80px 0;
+  padding: 80px 40px;
+
 }
 
 .light-section {
@@ -243,6 +252,9 @@ h2:after {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  transform: translateX(-30px);
+  margin-top: -100px;
+  opacity:0.85;
 }
 
 .right-section {
@@ -252,6 +264,8 @@ h2:after {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-top: -100px;
+  opacity:0.85;
 }
 
 
@@ -343,13 +357,30 @@ h2:after {
 
 .download-btn {
   display: inline-block;
-  background-color: #4a90e2;
-  color: white;
+  background-color: transparent; /* Remove the blue background */
+  color: currentColor; /* Use the current text color instead of white */
   padding: 12px 25px;
   border-radius: 4px;
+  border: 1.5px solid currentColor; /* Add a border with current text color */
   text-decoration: none;
   font-weight: 500;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease; /* Transition both background and border */
+  letter-spacing: 0.5px; /* Slightly spaced letters for modern feel */
+}
+
+.download-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+  border-color: currentColor; /* Keep the border color */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.download-btn i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.download-btn:hover i {
+  transform: translateY(-1px); /* Animate the icon slightly on hover */
 }
 
 .download-btn:hover {
@@ -396,7 +427,7 @@ h2:after {
 .portfolio-categories {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .portfolio-filter {
@@ -436,12 +467,12 @@ h2:after {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .portfolio-item {
   position: relative;
-  height: 220px;
+  height: 280px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -642,11 +673,13 @@ h2:after {
 .contact-item {
   margin-bottom: 15px;
   display: flex;
+  margin-right: 15px;
 }
 
 .contact-label {
   font-weight: bold;
   min-width: 80px;
+  margin-right: 15px;
 }
 
 .form-group {
@@ -871,45 +904,7 @@ h2:after {
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   NAVBAR: full-width flex container & centered links
-   ───────────────────────────────────────────────────────────────────────── */
-.navbar {
-  /* strip out the old horizontal padding so our inner container handles it */
-  padding: 15px 0;
-}
 
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;           /* fill the navbar */
-  padding: 0 40px;       /* match your previous left/right padding */
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   LOGO: bump up the size
-   ───────────────────────────────────────────────────────────────────────── */
-.logo img {
-  height: 60px;          /* was 40px */
-  width: auto;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   LINKS: take all available middle space & center
-   ───────────────────────────────────────────────────────────────────────── */
-.nav-links {
-  flex: 1;               /* fill the gap between logo & socials */
-  display: flex;
-  justify-content: center;
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   SOCIAL ICONS: keep them tight on the right
-   ───────────────────────────────────────────────────────────────────────── */
-.social-icons {
-  flex: 0;               /* don’t grow or shrink */
-}
 
 
 /* Update these styles in your CSS file */
@@ -937,20 +932,20 @@ h2:after {
   position: relative;
   top:60px;
   transition: transform 0.5s ease;
-  z-index: 1;
+  z-index: 0;
   opacity: 0.90; /* Make sure clouds are visible */
 }
 
 .left-cloud {
   left: -10%;
   bottom: 20%;
-  max-width: 45%;
+  max-width: 40%;
 }
 
 .right-cloud {
   right: -10%;
   bottom: 20%;
-  max-width: 45%;
+  max-width: 40%;
 }
 
 /* Animation class for initial appearance */
@@ -976,4 +971,395 @@ h2:after {
 @keyframes slideOutRight {
   0% { transform: translateX(0); }
   100% { transform: translateX(20px); }
+}
+
+
+/* Update portfolio image styling */
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+}
+
+.portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-image img {
+  transform: scale(1.1);
+}
+
+/* Adjust overlay for better readability */
+.portfolio-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.5), transparent);
+  padding-bottom: 25px;
+}
+
+.portfolio-categories {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  gap: 40px; /* Space between the headings */
+}
+
+.portfolio-filter {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  color: inherit;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.portfolio-filter:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.portfolio-filter:hover:after,
+.portfolio-filter.active:after {
+  width: 100%;
+}
+
+/* Hide the carousel indicators since we're using the headings instead */
+.carousel-indicators {
+  display: none;
+}
+
+
+/* Add this to your CSS file */
+* {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em; /* Slightly tighter letter spacing for headings */
+}
+
+.navbar a, .footer a, .portfolio-filter, .submit-button {
+  font-weight: 500;
+}
+
+/* Make the typewriter text and brackets more stylish */
+.typewriter-text, .bracket {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* More stylish buttons */
+.submit-button, .portfolio-link {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* Enhanced portfolio item hover effect */
+.portfolio-item:hover .portfolio-overlay {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.7), rgba(0,0,0,0.4), transparent);
+}
+
+/* More elegant section headings */
+h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px; /* Shorter, more elegant line */
+  height: 3px;
+  background-color: currentColor;
+}
+
+/* Make the text larger */
+.left-section h1, .right-section h1 {
+  font-size: 90px; /* Increased from 64px */
+  font-weight: 700;
+}
+
+/* If you also want to increase the bracket and typewriter text */
+.bracket, .typewriter-text {
+  font-size: 100px; /* Match the heading size */
+}
+
+
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Places it behind other content */
+}
+
+/* Add these styles to your CSS file */
+.timeline-container {
+  width: 100%;
+  margin: 60px 0 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  min-width: 700px;
+  height: 220px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 106px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #4a90e2;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%);
+}
+
+/* Top position items */
+.timeline-item[data-position="top"] .timeline-connector {
+  top: 70px;
+}
+
+.timeline-item[data-position="top"] .timeline-content {
+  top: 10px;
+}
+
+/* Bottom position items */
+.timeline-item[data-position="bottom"] .timeline-connector {
+  top: 118px;
+}
+
+.timeline-item[data-position="bottom"] .timeline-content {
+  top: 125px;
+}
+
+.timeline-content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+.timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #f5f5f5;
+  margin-bottom: 8px;
+}
+
+.timeline-content h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #4a90e2;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline {
+    min-width: 650px;
+  }
+  
+  .timeline-content h4 {
+    font-size: 14px;
+  }
+  
+  .timeline-content p {
+    font-size: 12px;
+  }
+}
+
+/* Timeline Container and Base Structure */
+.timeline-container {
+  width: 100%;
+  margin: 60px 0 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  min-width: 1200px; /* Increased minimum width to prevent overlap */
+  height: 250px; /* Original height */
+  top: 20px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 110px; /* Original position */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1) 10%,
+    rgba(255, 255, 255, 1) 90%,
+    rgba(255, 255, 255, 0)
+  );
+}
+
+/* Timeline Item Styling */
+.timeline-item {
+  position: relative;
+  text-align: center;
+  padding: 0 40px; /* Increased horizontal padding */
+  min-width: 220px; /* Set minimum width for each item */
+  flex: 1;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 106px; /* Original position */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: #4a90e2;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 40px; /* Original height */
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%);
+}
+
+/* Position Variants */
+/* Top position items */
+.timeline-item[data-position="top"] .timeline-connector {
+  top: 70px; /* Original value */
+}
+
+.timeline-item[data-position="top"] .timeline-content {
+  top: -20px; /* Original value */
+}
+
+/* Bottom position items */
+.timeline-item[data-position="bottom"] .timeline-connector {
+  top: 118px; /* Original value */
+}
+
+.timeline-item[data-position="bottom"] .timeline-content {
+  top: 155px; /* Original value */
+}
+
+/* Content Styling */
+.timeline-content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+}
+
+.timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #f5f5f5;
+  margin-bottom: 8px;
+}
+
+.timeline-content h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #4a90e2;
+}
+
+.timeline-content p {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+  white-space: nowrap; /* Prevent text wrapping */
+  color: #999; /* Grey color for description text */
+  overflow: visible; /* Allow text to be fully visible */
+  text-overflow: clip; /* Don't add ellipsis */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline {
+    min-width: 1000px;
+  }
+  
+  .timeline-content h4 {
+    font-size: 14px;
+  }
+  
+  .timeline-content p {
+    font-size: 12px;
+  }
+}
+
+
+.form-response {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #eee;
+}
+.form-response:empty {
+  display: none;
 }

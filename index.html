@@ -11,8 +11,11 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="light-mode">
+<body>
     <div class="background-animation">
         <canvas id="backgroundCanvas"></canvas>
     </div>
@@ -33,7 +36,7 @@
                 <a href="https://github.com/rodeo1203" target="_blank" aria-label="GitHub">
                   <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/adarshpandey" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/-adarshpandey" target="_blank" aria-label="LinkedIn">
                   <i class="fab fa-linkedin"></i>
                 </a>
                 <a href="https://www.instagram.com/adarsh.film" target="_blank" aria-label="Instagram">
@@ -59,7 +62,6 @@
                     </div>
                     <img id="creative-cloud" class="word-cloud right-cloud" src="images/creative-wordcloud.png" alt="Creative Interests">
                 </div>
-                
                 <div class="right-section">
                     <h1>creative</h1>
                     <!-- <p>A curious individual with a knack for films, tennis and music</p> -->
@@ -103,46 +105,150 @@
                     </div>
                 </div>
             </div>
+            <!-- Add this HTML to your About section before the closing div -->
+            <!-- Add this HTML to your About section before the closing div -->
+            <div class="timeline-container">
+                <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item" data-position="top" style="flex: 0.7;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content">
+                    <div class="timeline-date">MAY 2022</div>
+                    <h4>Undergraduate Degree</h4>
+                    <p>Completed Engineering at IIT</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-position="bottom" style="flex: 0.4;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content">
+                    <div class="timeline-date">JULY 2022</div>
+                    <h4>Trader</h4>
+                    <p>Joined Proprietary Trading Firm</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-position="top" style="flex: 1.6;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content">
+                    <div class="timeline-date">MAY 2024</div>
+                    <h4>CFA Level 2</h4>
+                    <p>Completed Chartered Financial Analyst L2</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-position="bottom" style="flex: 0.3;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content">
+                    <div class="timeline-date">AUG 2024</div>
+                    <h4>Master's Program</h4>
+                    <p>Joined MFE at Cornell University</p>
+                    </div>
+                </div>
+                
+                
+                <div class="timeline-item" data-position="top" style="flex: 1.2;">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content">
+                    <div class="timeline-date">MAY 2025</div>
+                    <h4>Portfolio Associate</h4>
+                    <p>Internship at Simplify Asset Management</p>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="portfolio" class="section light-section">
         <div class="container">
             <h2>Portfolio</h2>
+
+            <!-- Replace the existing carousel indicators with this -->
+            <div class="portfolio-categories">
+                <button class="portfolio-filter active" data-category="quant">Quant Finance</button>
+                <button class="portfolio-filter" data-category="creative">Film/Photo</button>
+            </div>
             
             <div class="portfolio-carousel">
                 <button class="carousel-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
                 
                 <div class="portfolio-slides">
                     <div class="portfolio-slide active" data-category="quant">
-                        <h3 class="portfolio-section-title">Quant Finance</h3>
                         <div class="portfolio-grid quant-section">
-                            <!-- Your quant items here -->
+                            <!-- Quant projects -->
                             <div class="portfolio-item" data-category="quant">
-                                <div class="portfolio-image placeholder"></div>
+                                <div class="portfolio-image">
+                                    <img src="images/quant-project-a.webp" alt="Github Project A">
+                                </div>
                                 <div class="portfolio-overlay">
-                                    <h3>Options Pricing Model</h3>
+                                    <h3>Quant Project A</h3>
                                     <p>Financial Engineering</p>
-                                    <a href="#" class="portfolio-link">View Project</a>
+                                    <a href="https://github.com/rodeo1203/Financial_News_Sentiment_Analysis" class="portfolio-link" target="_blank">View Project</a>
                                 </div>
                             </div>
-                            <!-- Other quant items -->
+                            <div class="portfolio-item" data-category="quant">
+                                <div class="portfolio-image">
+                                    <img src="images/quant-project-b.webp" alt="Github Project B">
+                                </div>
+                                <div class="portfolio-overlay">
+                                    <h3>Quant Project B</h3>
+                                    <p>Algorithmic Trading</p>
+                                    <a href="https://github.com/rodeo1203/Financial_News_Sentiment_Analysis" class="portfolio-link" target="_blank">View Project</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-item" data-category="quant">
+                                <div class="portfolio-image">
+                                    <img src="images/finance-blog.png" alt="Finance Blog">
+                                </div>
+                                <div class="portfolio-overlay">
+                                    <h3>Finance Blog</h3>
+                                    <p>Financial Analysis</p>
+                                    <a href="https://medium.com/@techinc.1234" class="portfolio-link" target="_blank">Read Blog</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="portfolio-slide" data-category="creative">
-                        <h3 class="portfolio-section-title">Film/Photo</h3>
                         <div class="portfolio-grid creative-section">
-                            <!-- Your creative items here -->
+                            <!-- Creative items -->
                             <div class="portfolio-item" data-category="creative">
-                                <div class="portfolio-image placeholder"></div>
+                                <div class="portfolio-image">
+                                    <img src="images/youtube-video.jpg" alt="YouTube Video">
+                                </div>
                                 <div class="portfolio-overlay">
                                     <h3>Short Film</h3>
                                     <p>Cinematography</p>
-                                    <a href="#" class="portfolio-link">Watch Film</a>
+                                    <a href="https://youtu.be/ZW9fWj9aYG8?si=yHCXlC4mKFd3MV2J" class="portfolio-link" target="_blank">Watch Film</a>
                                 </div>
                             </div>
-                            <!-- Other creative items -->
+                            <div class="portfolio-item" data-category="creative">
+                                <div class="portfolio-image">
+                                    <img src="images/instagram.jpg" alt="Instagram Portfolio">
+                                </div>
+                                <div class="portfolio-overlay">
+                                    <h3>Photography</h3>
+                                    <p>Visual Arts</p>
+                                    <a href="https://www.instagram.com/adarsh.film/" class="portfolio-link" target="_blank">View Gallery</a>
+                                </div>
+                            </div>
+                            <div class="portfolio-item" data-category="creative">
+                                <div class="portfolio-image">
+                                    <img src="images/youtube-channel.png" alt="YouTube Channel">
+                                </div>
+                                <div class="portfolio-overlay">
+                                    <h3>YouTube Channel</h3>
+                                    <p>Film Creation</p>
+                                    <a href="https://www.youtube.com/@AdarshPandeyFilms" class="portfolio-link" target="_blank">Visit Channel</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +280,7 @@
                             <span class="contact-value">rodeo1203</span>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-label">Instagram:</span>
+                            <span class="contact-label">Instagram: </span>
                             <span class="contact-value">adarsh.film</span>
                         </div>
                         <div class="contact-item">
@@ -184,26 +290,36 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Send Message</button>
+                    <form id="contactForm"
+                          action="https://formspree.io/f/xovdjvbl" 
+                          method="POST">
+                      <input type="hidden" name="_subject" value="New message from portfolio site">
+                  
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                      </div>
+                  
+                      <button type="submit" class="submit-button">Send Message</button>
+                      <p id="formResponse" class="form-response"></p>
                     </form>
-                </div>
+                  </div>
+                  
             </div>
         </div>
     </section>

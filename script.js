@@ -102,23 +102,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to show a specific slide
     function showSlide(index) {
-        // Hide all slides
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-        
-        // Deactivate all indicators
-        indicators.forEach(indicator => {
-            indicator.classList.remove('active');
-        });
-        
-        // Show the selected slide
+        // 1) toggle slides + bottom dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
         slides[index].classList.add('active');
         indicators[index].classList.add('active');
-        
-        // Update current slide index
         currentSlide = index;
+    
+        // 2) **sync the top filters** to the same category
+        const newCat = slides[index].dataset.category;
+        document.querySelectorAll('.portfolio-filter').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.category === newCat);
+        });
     }
+    
     
     // Event listeners for arrows
     if (prevArrow) {
@@ -150,6 +147,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize with the first slide (quant)
     showSlide(0);
+
+    // Contact form submit via Formspree
+    const contactForm = document.getElementById('contactForm');
+    const formResponse = document.getElementById('formResponse');
+
+    if (contactForm) {
+    contactForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        formResponse.textContent = 'Sending…';
+        const url = contactForm.action;
+        const formData = new FormData(contactForm);
+
+        try {
+        const res = await fetch(url, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+            formResponse.textContent = 'Thanks! Your message has been sent.';
+            contactForm.reset();
+        } else {
+            const data = await res.json();
+            formResponse.textContent = data.error || 'Oops—there was a problem sending your message.';
+        }
+        } catch (err) {
+        formResponse.textContent = 'Network error. Please try again later.';
+        }
+    });
+    }
+
     
 });
 
@@ -224,34 +253,61 @@ function checkCurrentSection() {
         }
     });
     
-    // Find the section that takes most of the viewport
-    let maxVisibleSection = null;
-    let maxVisibleAmount = 0;
+    // // Find the section that takes most of the viewport
+    // let maxVisibleSection = null;
+    // let maxVisibleAmount = 0;
     
-    sectionsElements.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    // sectionsElements.forEach(section => {
+    //     const rect = section.getBoundingClientRect();
+    //     const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
         
-        if (visibleHeight > maxVisibleAmount) {
-            maxVisibleAmount = visibleHeight;
-            maxVisibleSection = section.id;
-        }
+    //     if (visibleHeight > maxVisibleAmount) {
+    //         maxVisibleAmount = visibleHeight;
+    //         maxVisibleSection = section.id;
+    //     }
+    // });
+    
+    // // Update current section if changed
+    // if (maxVisibleSection && maxVisibleSection !== currentSection) {
+    //     currentSection = maxVisibleSection;
+    //     updateActiveNavLink(currentSection);
+        
+    //     // Toggle dark mode based on section index
+    //     const sectionIndex = sections.indexOf(currentSection);
+    //     if (sectionIndex % 2 !== 0) { // Odd index sections get dark mode
+    //         toggleDarkMode(true);
+    //     } else { // Even index sections get light mode
+    //         toggleDarkMode(false);
+    //     }
+    // }
+}
+
+const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+const portfolioSlides = document.querySelectorAll('.portfolio-slide');
+
+// Add click event to each filter
+portfolioFilters.forEach(filter => {
+  filter.addEventListener('click', function() {
+    // Remove active class from all filters
+    portfolioFilters.forEach(f => f.classList.remove('active'));
+    // Add active class to clicked filter
+    this.classList.add('active');
+    
+    // Get the category
+    const category = this.getAttribute('data-category');
+    
+    // Hide all slides
+    portfolioSlides.forEach(slide => {
+      slide.classList.remove('active');
     });
     
-    // Update current section if changed
-    if (maxVisibleSection && maxVisibleSection !== currentSection) {
-        currentSection = maxVisibleSection;
-        updateActiveNavLink(currentSection);
-        
-        // Toggle dark mode based on section index
-        const sectionIndex = sections.indexOf(currentSection);
-        if (sectionIndex % 2 !== 0) { // Odd index sections get dark mode
-            toggleDarkMode(true);
-        } else { // Even index sections get light mode
-            toggleDarkMode(false);
-        }
+    // Show the slide with matching category
+    const slideToShow = document.querySelector(`.portfolio-slide[data-category="${category}"]`);
+    if (slideToShow) {
+      slideToShow.classList.add('active');
     }
-}
+  });
+});
 
 // Toggle dark/light mode
 function toggleDarkMode(enable) {
@@ -312,11 +368,12 @@ function initBackgroundAnimation() {
             this.size = Math.random() * 30 + 10;
             
             // Random shape type (0: circle, 1: square, 2: triangle)
-            this.type = Math.floor(Math.random() * 3);
+            this.type = Math.floor(Math.random() * 2);
             
-            // Initial colors based on starting position
-            if (this.x < middleX) {
-                // Left side - colorful
+            // CHANGED: Initial colors based on starting position - flipped logic
+            // Right side is now colorful, left side is black and white
+            if (this.x > middleX) {
+                // Right side - colorful
                 this.colorSet = {
                     r: Math.floor(Math.random() * 200 + 55),
                     g: Math.floor(Math.random() * 200 + 55),
@@ -324,7 +381,7 @@ function initBackgroundAnimation() {
                     a: Math.random() * 0.5 + 0.2
                 };
             } else {
-                // Right side - black and white
+                // Left side - black and white
                 const gray = Math.floor(Math.random() * 200);
                 this.colorSet = {
                     r: gray,
@@ -358,9 +415,10 @@ function initBackgroundAnimation() {
         
         // Update colors based on position and dark/light mode
         updateColors() {
-            // Handle color transition based on position and dark mode
-            if (this.x < middleX) {
-                // Moving to left side
+            // CHANGED: Handle color transition based on position and dark mode - flipped logic
+            // Right side is now colorful, left side is black and white
+            if (this.x > middleX) {
+                // Moving to right side - colorful
                 if (window.isDarkMode) {
                     // Dark mode - more subdued colors
                     if (this.targetColorSet.r === this.targetColorSet.g && this.targetColorSet.g === this.targetColorSet.b) {
@@ -383,7 +441,7 @@ function initBackgroundAnimation() {
                     }
                 }
             } else {
-                // Moving to right side - always black and white
+                // Moving to left side - always black and white
                 const targetGray = window.isDarkMode ? 
                     Math.floor(Math.random() * 100) : // Darker grays in dark mode
                     Math.floor(Math.random() * 200);  // Lighter grays in light mode

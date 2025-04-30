@@ -1461,6 +1461,8 @@ LARGE SCREENS (≤670px)
    ========================================================================== */
 @media (max-width: 480px) {
   /* Original overrides */
+
+
   .hero h1 {
     font-size: 30px;
   }
@@ -1490,7 +1492,7 @@ LARGE SCREENS (≤670px)
     font-size: 1.75rem !important; /* ≈22.4px */
   }
   .hero {
-    height: 380px !important;
+    height: 360px;
   }
   .hero h1 {
     font-size: 2rem !important;    /* ≈25.6px */
@@ -1598,15 +1600,23 @@ LARGE SCREENS (≤670px)
   .social-icons a {
     margin: 0 8px;
   }
+
+  
 }
 
 
 /* ==========================================================================  
   LARGE SCREENS (≤670px)
   ========================================================================== */
-  @media (max-width: 420px) {
+@media (max-width: 420px) {
   .hero {
-    height: 360px;
+    height: 335px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    height: 310px;
   }
 }
 
@@ -1657,5 +1667,19 @@ LARGE SCREENS (≤670px)
 }
 
   
+@media (max-width: 480px) {
+  .word-cloud {
+    /* move the whole cloud 20px up from its default 60px */
+    top: 35px !important;
+  }
+}
 
+@media (max-width: 380px) {
+  .word-cloud {
+    /* another 10px up on really tiny screens */
+    top: 25px !important;
+  }
+}
   
+
+

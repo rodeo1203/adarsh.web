@@ -4,6 +4,8 @@ let currentSection = 'hero';
 let lastScrollPosition = 0;
 const sections = ['hero', 'about', 'featured', 'portfolio', 'blog', 'contact'];
 
+
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     const quantCloud = document.getElementById('quant-cloud');
@@ -181,6 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 });
+
+
 
 // Setup navigation links
 function setupNavigation() {

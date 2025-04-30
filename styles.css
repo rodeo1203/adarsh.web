@@ -225,6 +225,7 @@ h2:after {
   height: 100%;
 }
 
+
 .hero h1 {
   font-size: 64px;
   font-weight: 700;
@@ -246,7 +247,7 @@ h2:after {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transform: translateX(-30px);
+  transform: translateX(-20px);
   margin-top: -100px;
   opacity: 0.85;
 }
@@ -925,6 +926,13 @@ h2:after {
   font-weight: 700;
 }
 
+h1 .bracket,
+h1 .typewriter-text {
+  font-size: inherit;    /* pick up the h1 size */
+  display: inline-block; /* if you need to control spacing */
+  width: auto;           /* let it size around the text */
+}
+
 /* If you also want to increase the bracket and typewriter text */
 .bracket, .typewriter-text {
   font-size: 100px; /* Match the heading size */
@@ -1205,9 +1213,23 @@ html {
 /* ==========================================================================  
    LARGE SCREENS (≤1024px)
    ========================================================================== */
+   @media (max-width: 1200px) {
+    .hero {
+      height: 700px;
+    }
+  
+  }
+
+/* ==========================================================================  
+   LARGE SCREENS (≤1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
   .container {
     max-width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 64px;
   }
 
   .navbar {
@@ -1233,13 +1255,6 @@ html {
   .right-section p {
     margin: 0 auto;
     max-width: 100%;
-  }
-
-  .hero-image {
-    position: relative;
-    margin: 30px auto;
-    transform: none;
-    left: auto;
   }
 
   .about-content,
@@ -1270,12 +1285,29 @@ html {
 }
 
 /* ==========================================================================  
+   LARGE SCREENS (≤1024px)
+   ========================================================================== */
+   @media (max-width: 900px) {
+    .hero {
+      height: 500px;
+    }
+  
+  }
+
+/* ==========================================================================  
    TABLET (≤768px)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Original overrides */
+
+
+  /* Restore the hero’s top/bottom padding and height */
+  .hero.section {
+    padding-top: 240px !important;    /* or whatever your desktop hero top padding was */
+    padding-bottom: 0 !important;    /* kill that 60px bottom pad */
+  }
+
   .hero h1 {
-    font-size: 48px;
+    font-size: 40px;
   }
   .portfolio-grid {
     grid-template-columns: 1fr;
@@ -1401,12 +1433,35 @@ html {
 }
 
 /* ==========================================================================  
+   LARGE SCREENS (≤670px)
+   ========================================================================== */
+   @media (max-width: 670px) {
+    .hero {
+      height: 450px;
+    }
+    .hero h1 {
+      font-size: 34px;
+    }
+  }
+
+  /* ==========================================================================  
+   LARGE SCREENS (≤670px)
+   ========================================================================== */
+   @media (max-width: 580px) {
+    .hero {
+      height: 420px;
+    }
+    .hero h1 {
+      font-size: 34px;
+    }
+  }
+/* ==========================================================================  
    PHONE (≤480px)
    ========================================================================== */
 @media (max-width: 480px) {
   /* Original overrides */
   .hero h1 {
-    font-size: 36px;
+    font-size: 30px;
   }
   .hero p {
     font-size: 16px;
@@ -1434,7 +1489,7 @@ html {
     font-size: 1.75rem !important; /* ≈22.4px */
   }
   .hero {
-    height: 350px !important;
+    height: 360px !important;
   }
   .hero h1 {
     font-size: 2rem !important;    /* ≈25.6px */
@@ -1590,12 +1645,6 @@ html {
   }
 }
 
-/* ========================================================================
-   Hide word clouds on very small devices
-   ======================================================================== */
-   @media (max-width: 480px) {
-    .word-cloud {
-      display: none !important;
-    }
-  }
+  
+
   

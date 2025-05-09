@@ -339,7 +339,7 @@ function initBackgroundAnimation() {
     const ctx = canvas.getContext('2d');
     let width, height;
     let shapes = [];
-    const numberOfShapes = 50;
+    const numberOfShapes = 40;
     const middleX = window.innerWidth / 2;
     
     // Initialize the dark mode flag for the background
@@ -365,8 +365,8 @@ function initBackgroundAnimation() {
             this.y = Math.random() * height;
             
             // Random velocity
-            this.vx = (Math.random() - 0.5) * 2;
-            this.vy = (Math.random() - 0.5) * 2;
+            this.vx = (Math.random() - 0.5) ;
+            this.vy = (Math.random() - 0.5) ;
             
             // Random size
             this.size = Math.random() * 30 + 10;
